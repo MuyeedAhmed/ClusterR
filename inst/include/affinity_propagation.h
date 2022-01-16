@@ -63,7 +63,7 @@ void Affinity_Propagation::set_seed(int seed) {
   set_seed_r(seed);
 }
 
-void print(arma::colvec E, arma::mat S, int i, int K){
+void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx){
   arma::uvec I = arma::find(E == 1);                           // 'I' can be empty or having 1 or more items
   arma::uvec notI = arma::find(E != 1);
   arma::uvec c;
@@ -369,7 +369,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     // Handle plotting and storage of details, if requested   [ plotting not supported in Rcpp ]
     //-----------------------------------------------------
     std::cout << details <<" - details ";
-    print(E, S, i, K);
+    print(E, S, i, K, tmpidx);
     if (details) {
 
       if (K==0) {
