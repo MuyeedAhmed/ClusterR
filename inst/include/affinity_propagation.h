@@ -369,6 +369,13 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
           arma::uvec tmp_Ic = I(c);
           c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );
           tmpidx = I(c);
+          //#########################################################
+          std::cout << i <<" - ";
+          for(int hue : tmpidx){
+            std::cout << hue << ", ";
+          }
+          std::cout << std::endl;
+          //#########################################################
           arma::umat tmp_um(2, notI.n_elem);
           arma::uvec tmp_v_um = tmpidx(notI);
           for (unsigned int f = 0; f < notI.n_elem; f++) {
@@ -423,10 +430,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     c = arma::index_max(S.cols(I), 1);
     c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );                                 // Identify clusters [ converted 'K' to 'K-1' due to dif in indexing compared to matlab ]
     tmpidx = I(c);
-    //####
-    for(int hue : tmpidx){
-      std::cout << hue << ", " << std::endl;
-    }
+    
       
       
     arma::umat tmp_um(2, notI.n_elem);
