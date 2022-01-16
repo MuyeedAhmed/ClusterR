@@ -65,8 +65,8 @@ void Affinity_Propagation::set_seed(int seed) {
 //#########################################################
 void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
   std::string filename("G:\\Research\\ClusteringProject\\R\\AP\\labels.csv");
-	std::ofstream file_out;
-	file_out.open(filename, std::ios_base::app);
+  std::ofstream file_out;
+  file_out.open(filename, std::ios_base::app);
   
   file_out << i << ",";
   if (K==0) {
@@ -101,6 +101,7 @@ void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
       //std::cout << std::endl;  
     }
   }
+  file_out.close();
 }
 //#########################################################
 //-----------------------------------------------------------------------------
