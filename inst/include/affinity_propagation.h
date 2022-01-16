@@ -63,6 +63,26 @@ void Affinity_Propagation::set_seed(int seed) {
   set_seed_r(seed);
 }
 
+void print(arma::colvec E, arma::mat S, int i, int K){
+  arma::uvec I = arma::find(E == 1);                           // 'I' can be empty or having 1 or more items
+  arma::uvec notI = arma::find(E != 1);
+  arma::uvec c;
+  if (!I.is_empty()) {
+    c = arma::index_max(S.cols(I), 1);
+
+    arma::uvec tmp_c = arma::unique(c);
+    arma::uvec tmp_Ic = I(c);
+    c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );
+    tmpidx = I(c);
+    //#########################################################
+    std::cout << i <<" - ";
+    for(int hue : tmpidx){
+      std::cout << hue << ", ";
+    }
+    std::cout << std::endl;
+    //#########################################################
+  }
+}
 
 //-----------------------------------------------------------------------------
 // this function if maximum = TRUE is equivalent to the matlab's max(vector, 0)
@@ -348,7 +368,8 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     //-----------------------------------------------------
     // Handle plotting and storage of details, if requested   [ plotting not supported in Rcpp ]
     //-----------------------------------------------------
-
+    std::cout << details <<" - details ";
+    print(E, S, i, K)
     if (details) {
 
       if (K==0) {
