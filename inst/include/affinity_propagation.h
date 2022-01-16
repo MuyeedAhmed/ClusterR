@@ -214,7 +214,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
       S(i,i) = p[i];                                                               // p is an std::vector<double> equal to the number of rows of the similarity matrix
     }
   }
-
+  std::cout << "You serious!!!!!!!!!!!!!!!!!!!! " << std::endl;
   //--------------------------------------------------
   // Numerical stability -- replace -INF with -realmax
   //--------------------------------------------------
