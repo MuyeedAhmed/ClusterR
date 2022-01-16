@@ -24,7 +24,7 @@
 #include <iostream>
 # include <cmath>
 
-
+#include <fstream>
 
 //****************************************************************************************************************************************** .h file
 
@@ -64,14 +64,21 @@ void Affinity_Propagation::set_seed(int seed) {
 }
 //#########################################################
 void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
+  std::string filename("G:\\Research\\ClusteringProject\\R\\AP\\labels.csv");
+	std::ofstream file_out;
+	file_out.open(filename, std::ios_base::app);
+  
+  file_out << i << ",";
   if (K==0) {
-        tmpidx.set_size(N);
-        tmpidx.fill(arma::datum::nan);
-        std::cout << i <<" - ";
-        for(int hue : tmpidx){
-          std::cout << hue << ", ";
-        }
-        std::cout << std::endl;
+    tmpidx.set_size(N);
+    tmpidx.fill(arma::datum::nan);
+    //std::cout << i <<" - ";
+    for(int idx : tmpidx){
+      file_out << idx << ",";
+      //std::cout << idx << ", ";
+    }
+    file_out << std::endl;
+    //std::cout << std::endl;
   }
   else{
     arma::uvec I = arma::find(E == 1);                           // 'I' can be empty or having 1 or more items
@@ -85,12 +92,13 @@ void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
       c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );
       tmpidx = I(c);
      
-      std::cout << i <<" - ";
-      for(int hue : tmpidx){
-        std::cout << hue << ", ";
+      //std::cout << i <<" - ";
+      for(int idx : tmpidx){
+        file_out << idx << ",";
+        //std::cout << idx << ", ";
       }
-      std::cout << std::endl;
-      
+      file_out << std::endl;
+      //std::cout << std::endl;  
     }
   }
 }
