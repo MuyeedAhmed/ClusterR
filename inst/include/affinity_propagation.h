@@ -62,28 +62,39 @@ void Affinity_Propagation::set_seed(int seed) {
   Rcpp::Function set_seed_r = base_env["set.seed"];
   set_seed_r(seed);
 }
+//#########################################################
+void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
+  if (K==0) {
+        tmpidx.set_size(N);
+        tmpidx.fill(arma::datum::nan);
+        std::cout << i <<" - ";
+        for(int hue : tmpidx){
+          std::cout << hue << ", ";
+        }
+        std::cout << std::endl;
+  }
+  else{
+    arma::uvec I = arma::find(E == 1);                           // 'I' can be empty or having 1 or more items
+    arma::uvec notI = arma::find(E != 1);
+    arma::uvec c;
+    if (!I.is_empty()) {
+      c = arma::index_max(S.cols(I), 1);
 
-void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx){
-  arma::uvec I = arma::find(E == 1);                           // 'I' can be empty or having 1 or more items
-  arma::uvec notI = arma::find(E != 1);
-  arma::uvec c;
-  if (!I.is_empty()) {
-    c = arma::index_max(S.cols(I), 1);
-
-    arma::uvec tmp_c = arma::unique(c);
-    arma::uvec tmp_Ic = I(c);
-    c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );
-    tmpidx = I(c);
-    //#########################################################
-    std::cout << i <<" - ";
-    for(int hue : tmpidx){
-      std::cout << hue << ", ";
+      arma::uvec tmp_c = arma::unique(c);
+      arma::uvec tmp_Ic = I(c);
+      c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );
+      tmpidx = I(c);
+     
+      std::cout << i <<" - ";
+      for(int hue : tmpidx){
+        std::cout << hue << ", ";
+      }
+      std::cout << std::endl;
+      
     }
-    std::cout << std::endl;
-    //#########################################################
   }
 }
-
+//#########################################################
 //-----------------------------------------------------------------------------
 // this function if maximum = TRUE is equivalent to the matlab's max(vector, 0)
 // and if maximum = FALSE is equivalent to the matlab's min(vector, 0)
@@ -368,8 +379,9 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     //-----------------------------------------------------
     // Handle plotting and storage of details, if requested   [ plotting not supported in Rcpp ]
     //-----------------------------------------------------
-    std::cout << details <<" - details ";
-    print(E, S, i, K, tmpidx);
+    //######################################################################################################
+    print(E, S, i, K, tmpidx, N);
+    //######################################################################################################
     if (details) {
 
       if (K==0) {
@@ -390,13 +402,6 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
           arma::uvec tmp_Ic = I(c);
           c(I) = arma::regspace<arma::uvec>( 0, 1, K-1 );
           tmpidx = I(c);
-          //#########################################################
-          std::cout << i <<" - ";
-          for(int hue : tmpidx){
-            std::cout << hue << ", ";
-          }
-          std::cout << std::endl;
-          //#########################################################
           arma::umat tmp_um(2, notI.n_elem);
           arma::uvec tmp_v_um = tmpidx(notI);
           for (unsigned int f = 0; f < notI.n_elem; f++) {
