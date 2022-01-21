@@ -237,13 +237,11 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
 
   if (nonoise == 0.0) {
     set_seed(0);
+    arma::mat Sadd;
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
     
-    // ...
-    int rows = std::extent<decltype(Sadd), 0>::value;
-    int cols = std::extent<decltype(Sadd), 1>::value;
-    std::cout << cols << ", " << rows << endl;
+    std::cout << S[N-1][N-1] << ", " << Sadd[N-1][N-1] << std::endl;
     
   }
 
