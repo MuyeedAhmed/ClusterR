@@ -25,7 +25,7 @@
 # include <cmath>
 
 #include <fstream>
-
+#include <type_traits>
 //****************************************************************************************************************************************** .h file
 
 
@@ -239,9 +239,12 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     set_seed(0);
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
-    for(int hue : Sadd){
-      std::cout << Sadd << ", ";
-    }
+    
+    // ...
+    int rows = std::extent<decltype(Sadd), 0>::value;
+    int cols = std::extent<decltype(Sadd), 1>::value;
+    std::cout << cols << ", " << rows << endl;
+    
   }
 
   //---------------------------------------
