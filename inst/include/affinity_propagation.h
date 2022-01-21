@@ -237,7 +237,11 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
 
   if (nonoise == 0.0) {
     set_seed(0);
-    S = S + (eps * S + realmin_ * 100.0) % arma::randn(N,N);
+    Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
+    S = S + Sadd;
+    for(int hue : Sadd){
+      std::cout << Sadd << ", ";
+    }
   }
 
   //---------------------------------------
