@@ -244,7 +244,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     std::string sfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S.csv");
     std::ofstream sfile_out;
     sfile_out.open(sfilename, std::ios_base::app);
-    for(int si = 0; si < N*N; si++){
+    for(unsigned int si = 0; si < N*N; si++){
         sfile_out << S[si] << ",";
     }
     sfile_out << std::endl;
@@ -253,7 +253,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     std::string srandfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S_rand.csv");
     std::ofstream srandfile_out;
     srandfile_out.open(srandfilename, std::ios_base::app);
-    for(int si = 0; si < N*N; si++){
+    for(unsigned int si = 0; si < N*N; si++){
         srandfile_out << S[si] << ",";
     }
     srandfile_out << std::endl;
