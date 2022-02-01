@@ -241,7 +241,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
     std::cout << N*N << std::endl;
-    std::cout << S[7] << ", " << Sadd[7] << std::endl;
+    std::cout << S[N*N-1] << ", " << Sadd[N*N-1] << std::endl;
     
   }
 
