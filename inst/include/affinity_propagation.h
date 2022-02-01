@@ -236,11 +236,6 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
   double realmax_ = std::numeric_limits<double>::max();
 //------------------------------------------------------------------------------------------------------------------------
   if (nonoise == 0.0) {
-    set_seed(0);
-    arma::mat Sadd;
-    Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
-    S = S + Sadd;
-    
     std::string sfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S.csv");
     std::ofstream sfile_out;
     sfile_out.open(sfilename, std::ios_base::app);
@@ -249,6 +244,13 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     }
     sfile_out << std::endl;
     sfile_out.close();
+    
+    set_seed(0);
+    arma::mat Sadd;
+    Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
+    S = S + Sadd;
+    
+    
     
     std::string srandfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S_rand.csv");
     std::ofstream srandfile_out;
@@ -260,7 +262,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     srandfile_out.close();
     
     //std::cout << N*N << std::endl;
-    std::cout << log10(Sadd[3]) << ", " << Sadd[3] << std::endl;
+    std::cout << log10(Sadd[0]) << ", " << Sadd[0] << std::endl;
     
   }
   //---------------------------------------
