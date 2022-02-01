@@ -234,14 +234,14 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
 
   double realmin_ = std::numeric_limits<double>::min();
   double realmax_ = std::numeric_limits<double>::max();
-
+//------------------------------------------------------------------------------------------------------------------------
   if (nonoise == 0.0) {
     set_seed(0);
     arma::mat Sadd;
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
-    
-    //std::cout << S[7] << ", " << Sadd[7] << std::endl;
+    std::cout << N*N << std::endl;
+    std::cout << S[7] << ", " << Sadd[7] << std::endl;
     
   }
 
