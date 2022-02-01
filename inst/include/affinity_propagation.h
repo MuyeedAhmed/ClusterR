@@ -263,15 +263,6 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     //std::cout << S[N*N-1] << ", " << Sadd[N*N-1] << std::endl;
     
   }
-
-  
-  
-    
-      
-      //std::cout << std::endl;  
-    }
-  }
-  
   //---------------------------------------
   // Place preferences on the diagonal of S
   //---------------------------------------
