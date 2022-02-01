@@ -240,11 +240,38 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     arma::mat Sadd;
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
-    std::cout << N*N << std::endl;
-    std::cout << S[N*N-1] << ", " << Sadd[N*N-1] << std::endl;
+    
+    std::string sfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S.csv");
+    std::ofstream sfile_out;
+    sfile_out.open(sfilename, std::ios_base::app);
+    for(int si = 0; si < N*N; si++){
+        sfile_out << S[si] << ",";
+    }
+    sfile_out << std::endl;
+    sfile_out.close();
+    
+    std::string srandfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S_rand.csv");
+    std::ofstream srandfile_out;
+    srandfile_out.open(srandfilename, std::ios_base::app);
+    for(int si = 0; si < N*N; si++){
+        srandfile_out << S[si] << ",";
+    }
+    srandfile_out << std::endl;
+    srandfile_out.close();
+    
+    //std::cout << N*N << std::endl;
+    //std::cout << S[N*N-1] << ", " << Sadd[N*N-1] << std::endl;
     
   }
 
+  
+  
+    
+      
+      //std::cout << std::endl;  
+    }
+  }
+  
   //---------------------------------------
   // Place preferences on the diagonal of S
   //---------------------------------------
