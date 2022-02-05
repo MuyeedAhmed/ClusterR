@@ -64,7 +64,8 @@ void Affinity_Propagation::set_seed(int seed) {
 }
 //#########################################################
 void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
-  std::string filename("G:\\Research\\ClusteringProject\\R\\AP\\labels.csv");
+  //std::string filename("G:\\Research\\ClusteringProject\\R\\AP\\labels.csv");
+  std::string filename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP/labels.csv");
   std::ofstream file_out;
   file_out.open(filename, std::ios_base::app);
   
@@ -236,7 +237,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
   double realmax_ = std::numeric_limits<double>::max();
 //------------------------------------------------------------------------------------------------------------------------
   if (nonoise == 0.0) {
-    std::string sfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S.csv");
+    std::string sfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S.csv");
     std::ofstream sfile_out;
     sfile_out.open(sfilename, std::ios_base::app);
     for(unsigned int si = 0; si < N*N; si++){
@@ -252,7 +253,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     
     
     
-    std::string srandfilename("G:\\Research\\ClusteringProject\\R\\AP_S\\S_rand.csv");
+    std::string srandfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S_rand.csv");
     std::ofstream srandfile_out;
     srandfile_out.open(srandfilename, std::ios_base::app);
     for(unsigned int si = 0; si < N*N; si++){
