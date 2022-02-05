@@ -263,7 +263,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     srandfile_out.close();
     
     //std::cout << N*N << std::endl;
-    std::cout << log10(Sadd[0]) << ", " << Sadd[0] << std::endl;
+    std::cout << log10(Sadd[1]) << ", " << Sadd[1] << std::endl;
     
   }
   //---------------------------------------
