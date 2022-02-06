@@ -27,8 +27,8 @@
 #include <fstream>
 #include <type_traits>
 
-#include <string>
-#include <sstream>
+//#include <string>
+//#include <sstream>
 //****************************************************************************************************************************************** .h file
 
 
@@ -264,18 +264,16 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     std::ofstream srandfile_out;
     srandfile_out.open(srandfilename, std::ios_base::app);
     for(unsigned int si = 0; si < N*N; si++){
-        std::stringstream buffer;
-        buffer << Sadd[si];
-        srandfile_out << buffer.str() << ",";
-        //srandfile_out << Sadd[si] << ",";
+        
+        srandfile_out << Sadd[si] << ",";
         //srandfile_out << std::to_string(Sadd[si]) << ",";
     }
     srandfile_out << std::endl;
     srandfile_out.close();
     
-    std::stringstream buffer;
-    buffer << Sadd[1];
-    std::cout << buffer.str() << std::endl;
+    //std::stringstream buffer;
+    //buffer << Sadd[1];
+    //std::cout << buffer.str() << std::endl;
     //std::cout << N*N << std::endl;
     //std::cout << log10(Sadd[1]) << ", " << Sadd[1] << std::endl;
     
