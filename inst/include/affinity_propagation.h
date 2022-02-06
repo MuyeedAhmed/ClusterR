@@ -240,8 +240,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
   double realmax_ = std::numeric_limits<double>::max();
 //------------------------------------------------------------------------------------------------------------------------
   if (nonoise == 0.0) {
-    std::cout << std::fixed;
-    std::cout << std::setprecision(500);
+    
     
     std::string sfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S.csv");
     std::ofstream sfile_out;
@@ -258,7 +257,8 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
     
-    
+    std::cout << std::fixed;
+    std::cout << std::setprecision(500);
     
     std::string srandfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S_rand.csv");
     std::ofstream srandfile_out;
