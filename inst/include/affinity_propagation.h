@@ -252,7 +252,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     sfile_out << std::endl;
     sfile_out.close();
     
-    set_seed(0);
+    //set_seed(0);
     arma::mat Sadd;
     Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
     S = S + Sadd;
