@@ -253,27 +253,27 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     sfile_out.close();
     
     //set_seed(0);
-    #arma::mat Sadd;
-    #std::cout << eps << std::endl;
-    #std::cout << realmin_ << std::endl;
+    /*arma::mat Sadd;
+    std::cout << eps << std::endl;
+    std::cout << realmin_ << std::endl;
     
-    #Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
-    #S = S + Sadd;
+    Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
+    S = S + Sadd;
     
-    #std::cout << std::fixed;
-    #std::cout << std::setprecision(500);
+    std::cout << std::fixed;
+    std::cout << std::setprecision(500);
     
-    #std::string srandfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S_rand.csv");
-    #std::ofstream srandfile_out;
-    #srandfile_out.open(srandfilename, std::ios_base::app);
-    #for(unsigned int si = 0; si < N*N; si++){
+    std::string srandfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S_rand.csv");
+    std::ofstream srandfile_out;
+    srandfile_out.open(srandfilename, std::ios_base::app);
+    for(unsigned int si = 0; si < N*N; si++){
         
-    #   srandfile_out << Sadd[si] << ",";
+       srandfile_out << Sadd[si] << ",";
         //srandfile_out << std::to_string(Sadd[si]) << ",";
-    #}
+    }
     #srandfile_out << std::endl;
     #srandfile_out.close();
-    
+    */
     //std::stringstream buffer;
     //buffer << Sadd[1];
     //std::cout << buffer.str() << std::endl;
