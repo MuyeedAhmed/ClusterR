@@ -67,8 +67,8 @@ void Affinity_Propagation::set_seed(int seed) {
 }
 //#########################################################
 void print(arma::colvec E, arma::mat S, int i, int K, arma::uvec tmpidx, int N){
-  //std::string filename("G:\\Research\\ClusteringProject\\R\\AP\\labels.csv");
-  std::string filename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP/labels.csv");
+  std::string filename("G:\\Research\\ClusteringProject\\R\\APR\\AP\\labels.csv");
+  //std::string filename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP/labels.csv");
   std::ofstream file_out;
   file_out.open(filename, std::ios_base::app);
   
@@ -242,7 +242,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
   if (nonoise == 0.0) {
     
     
-    std::string sfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S.csv");
+    std::string sfilename("G:\\Research\\ClusteringProject\\R\\APR\\AP_S\\S.csv");
     std::ofstream sfile_out;
     sfile_out.open(sfilename, std::ios_base::app);
     
@@ -253,26 +253,26 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     sfile_out.close();
     
     //set_seed(0);
-    arma::mat Sadd;
-    std::cout << eps << std::endl;
-    std::cout << realmin_ << std::endl;
+    #arma::mat Sadd;
+    #std::cout << eps << std::endl;
+    #std::cout << realmin_ << std::endl;
     
-    Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
-    S = S + Sadd;
+    #Sadd = (eps * S + realmin_ * 100.0) % arma::randn(N,N);
+    #S = S + Sadd;
     
-    std::cout << std::fixed;
-    std::cout << std::setprecision(500);
+    #std::cout << std::fixed;
+    #std::cout << std::setprecision(500);
     
-    std::string srandfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S_rand.csv");
-    std::ofstream srandfile_out;
-    srandfile_out.open(srandfilename, std::ios_base::app);
-    for(unsigned int si = 0; si < N*N; si++){
+    #std::string srandfilename("/home/neamtiu/Desktop/ma234/ClusteringProject/R/AP_S/S_rand.csv");
+    #std::ofstream srandfile_out;
+    #srandfile_out.open(srandfilename, std::ios_base::app);
+    #for(unsigned int si = 0; si < N*N; si++){
         
-        srandfile_out << Sadd[si] << ",";
+    #   srandfile_out << Sadd[si] << ",";
         //srandfile_out << std::to_string(Sadd[si]) << ",";
-    }
-    srandfile_out << std::endl;
-    srandfile_out.close();
+    #}
+    #srandfile_out << std::endl;
+    #srandfile_out.close();
     
     //std::stringstream buffer;
     //buffer << Sadd[1];
@@ -430,7 +430,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     // Handle plotting and storage of details, if requested   [ plotting not supported in Rcpp ]
     //-----------------------------------------------------
     //######################################################################################################
-    print(E, S, i, K, tmpidx, N);
+    //print(E, S, i, K, tmpidx, N);
     //######################################################################################################
     if (details) {
 
