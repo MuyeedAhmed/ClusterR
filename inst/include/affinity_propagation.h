@@ -430,7 +430,7 @@ Rcpp::List Affinity_Propagation::affinity_propagation(arma::mat &s, std::vector<
     // Handle plotting and storage of details, if requested   [ plotting not supported in Rcpp ]
     //-----------------------------------------------------
     //######################################################################################################
-    //print(E, S, i, K, tmpidx, N);
+    print(E, S, i, K, tmpidx, N);
     //######################################################################################################
     if (details) {
 
